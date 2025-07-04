@@ -1,6 +1,9 @@
 from setuptools import find_packages,setup
+from typing import List
 
-def get_requirements(file_path:str)->list[str]:
+HYPEN_E_DOT = "-e ."
+
+def get_requirements(file_path:str)->List[str]:
     requirements = []
     with open(file_path) as file_obj:
         requirements = file_obj.readlines()
@@ -16,6 +19,6 @@ setup(
     version="0.0.1",
     author = "thilan hasitha",
     author_email = "yasanjithbgth@gmail.com",
-    install_requires =get_requirements(),
+    install_requires =get_requirements(r"E:\AI\AI,ML Career\DeepLearning Project\requirements_dev.txt"),
     packages=find_packages(),
 )
