@@ -10,23 +10,20 @@ class TrainPipeline:
     def __init__(self):
         self.data_ingestion_config = DataIngestionConfig()
 
-    def start_data_ingestion(self)->DataIngestionArtifact:
-        logging.info( "Entered the start _data_ingestion method of training")
+    def start_data_ingestion(self) -> DataIngestionArtifact:
+        logging.info("Entered the start_data_ingestion method of training")
 
-    try:
-        logging.info("Getting the data from the s3 bucket")
+        try:
+            logging.info("Getting the data from the s3 bucket")
 
-        data_ingestion = DataIngestion(data_ingestion_config = self.data_ingestion_config,)
+            data_ingestion = DataIngestion(data_ingestion_config=self.data_ingestion_config)
 
-        data_ingestion_artifact = data_ingestion.initiate_data_ingestion
+            data_ingestion_artifact = data_ingestion.initiate_data_ingestion()
 
-        logging.info("got the train set and test set from s3")
-        logging.info("Existed the start_data_ingestion method of pipeline class")
+            logging.info("Got the train set and test set from s3")
+            logging.info("Exited the start_data_ingestion method of pipeline class")
 
-        #return data_ingestion_artifact
-    
-    except Exception as e:
-        raise XRayException(e,sys)
+            return data_ingestion_artifact
 
-
-
+        except Exception as e:
+            raise XRayException(e, sys)
